@@ -41,3 +41,13 @@ Accurate 6D pose estimation is critical for:
 - Industrial automation and inspection
 
 Unlike conventional methods that rely on object-specific training data, **ZEUS6D** enables **zero-shot inference** for novel objects using only their CAD models — no retraining required.
+
+## 📽️ Examples
+
+### 🕶️ AR Applications
+<details>
+<summary>▶ augmented_reality.mp4</summary>
+
+<video src="examples/ar.mp4" controls width="600"></video>
+</details>
+
