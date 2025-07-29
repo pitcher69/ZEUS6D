@@ -44,10 +44,6 @@ Unlike conventional methods that rely on object-specific training data, **ZEUS6D
 
 ## 📽️ Examples
 
-### 🕶️ AR Applications
-<details>
-<summary>▶ augmented_reality.mp4</summary>
-
-<video src="examples/317560123-80e96855-a73c-4bee-bcef-7cba92df55ca.mp4" controls width="600"></video>
-</details>
+AR Applications:  
+https://github.com/user-attachments/assets/5cbaac85-f658-4622-8aba-911ec87e61d9
 
