@@ -45,5 +45,5 @@ Unlike conventional methods that rely on object-specific training data, **ZEUS6D
 ## 📽️ Examples
 
 AR Applications:  
-https://github.com/user-attachments/assets/5cbaac85-f658-4622-8aba-911ec87e61d9
+https://github.com/NVlabs/FoundationPose/assets/23078192/80e96855-a73c-4bee-bcef-7cba92df55ca
 
