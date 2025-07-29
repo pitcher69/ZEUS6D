@@ -48,6 +48,6 @@ Unlike conventional methods that rely on object-specific training data, **ZEUS6D
 <details>
 <summary>▶ augmented_reality.mp4</summary>
 
-<video src="examples/ar.mp4" controls width="600"></video>
+<video src="examples/317560123-80e96855-a73c-4bee-bcef-7cba92df55ca.mp4" controls width="600"></video>
 </details>
 
