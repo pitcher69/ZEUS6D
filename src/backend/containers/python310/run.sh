@@ -27,3 +27,4 @@ echo running code
 cp ../mask_match.py .
 python mask_match.py
 deactivate
+rm -rf venv
