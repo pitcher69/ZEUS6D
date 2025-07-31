@@ -4,12 +4,12 @@ import json
 import re
 from ransac_icp import run_ransac_icp_single, angle_errors, trans_errors 
 # === Folder paths ===
-query_ply = "data/query_5000_scaled.ply"
-query_feat_npy = "output/query_128.npy"
-target_ply_dir = "output/point_cloud"
-target_feat_dir = "fused_feature"
-scene_gt_path = "data/scene_gt.json"
-save_dir = "output/ransac"
+query_ply = "./data/query_5000_scaled.ply"
+query_feat_npy = "./output/query_128.npy"
+target_ply_dir = "./output/point_cloud"
+target_feat_dir = "./fused_feature"
+scene_gt_path = "./data/scene_gt.json"
+save_dir = "./output/ransac"
 def ransac_icp_full():    
     # === Collect all valid frame files ===
     frame_files = []

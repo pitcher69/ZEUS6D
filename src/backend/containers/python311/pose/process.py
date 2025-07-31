@@ -93,11 +93,11 @@ def process_folder(mesh_path, rgb_folder, transformation_folder, intrinsics, out
 
 # Example Usage
 def process():
-    mesh_path = "data/model.ply"
-    rgb_folder = "data/rgb"
-    transformation_folder = "output/ransac"
-    output_folder = "overlay"
-    gif_path = "output_animation.gif"
+    mesh_path = "./data/model.ply"
+    rgb_folder = "./data/rgb"
+    transformation_folder = "./output/ransac"
+    output_folder = "./overlay"
+    gif_path = "./output_animation.gif"
 
     intrinsics = np.array([
         [1066.778, 0.0, 312.9869],

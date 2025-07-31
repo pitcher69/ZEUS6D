@@ -4,8 +4,8 @@ import open3d as o3d
 from trimesh.triangles import points_to_barycentric as pob
 import os
 
-MODEL = "data/model.ply"
-SAVE_PATH = "data/query_5000_scaled.ply"
+MODEL = "./data/model.ply"
+SAVE_PATH = "./data/query_5000_scaled.ply"
 SAMPLES = 5000
 def genpc():
     # Create output directory if it doesn't exist

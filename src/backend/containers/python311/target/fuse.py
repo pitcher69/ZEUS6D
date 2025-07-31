@@ -2,7 +2,7 @@ import os
 import numpy as np
 
 def fuse_features_from_paths(gedi_path, dino_pca_path,
-                             output_fused_dir="output/fused_feature"):
+                             output_fused_dir="./output/fused_feature"):
     os.makedirs(output_fused_dir, exist_ok=True)
 
     # === Load features
@@ -30,8 +30,8 @@ import os
 from glob import glob
 
 def fuse(
-    gedi_root="output/gedi",
-    dino_root="output/dino_feature_pca",
+    gedi_root="./output/gedi",
+    dino_root="./output/dino_feature_pca",
     output_dir="fused_feature"
 ):
     from tqdm import tqdm

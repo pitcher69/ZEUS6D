@@ -1,7 +1,7 @@
 from PIL import Image
 import glob
 
-image_folder = "output/renders"
+image_folder = "./output/renders"
 image_files = sorted(glob.glob(f"{image_folder}/*.png"))
 def views():
     # Load and convert each image to RGB (removes transparency)
@@ -15,7 +15,7 @@ def views():
     
     # Save as animated GIF
     if frames:
-        output_path = "output/rendered_views.gif"
+        output_path = "./output/rendered_views.gif"
         frames[0].save(output_path, format="GIF", save_all=True,
                        append_images=frames[1:], duration=150, loop=0)
         print(f"GIF saved at: {output_path}")

@@ -8,13 +8,13 @@ from genpc import process_point_cloud
 # from your_module import process_point_cloud, extract_dino_pca_only
 
 # === Paths
-rgb_dir = "data/rgb"
-depth_dir = "data/depth"
-mask_dir = "data/mask"
-scene_camera_path = "data/scene_camera.json"
+rgb_dir = "./data/rgb"
+depth_dir = "./data/depth"
+mask_dir = "./data/mask"
+scene_camera_path = "./data/scene_camera.json"
 
-pointcloud_output_dir = "output/point_cloud"
-pca_output_dir = "output/dino_feature_pca"
+pointcloud_output_dir = "./output/point_cloud"
+pca_output_dir = "./output/dino_feature_pca"
 
 mask_suffix = "_000000.png"
 

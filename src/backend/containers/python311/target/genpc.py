@@ -4,7 +4,7 @@ import cv2
 import numpy as np
 import os
 
-def process_point_cloud(rgb_path, depth_path, mask_path, output_dir="output/point_cloud"):
+def process_point_cloud(rgb_path, depth_path, mask_path, output_dir="./output/point_cloud"):
     os.makedirs(output_dir, exist_ok=True)
 
     # === Load images ===
