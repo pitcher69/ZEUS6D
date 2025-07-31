@@ -8,10 +8,10 @@ from transformers import AutoImageProcessor, AutoModel
 import open3d as o3d
 
 # === Paths ===
-pointcloud_path = "/content/data/query_5000_scaled.ply"
-image_folder = "/content/output/renders"
-obj_pose_path = "/content/cnos/src/poses/predefined_poses/obj_poses_level0.npy"
-cam_pose_path = "/content/cnos/src/poses/predefined_poses/cam_poses_level0.npy"
+pointcloud_path = "data/query_5000_scaled.ply"
+image_folder = "output/renders"
+obj_pose_path = "../../../cnos/src/poses/predefined_poses/obj_poses_level0.npy"
+cam_pose_path = "../../../cnos/src/poses/predefined_poses/cam_poses_level0.npy"
 
 # === Camera intrinsics (YCBV) ===
 intrinsic = np.array([[572.4114, 0.0, 325.2611],
@@ -96,6 +96,6 @@ def features():
             final_features[i] = np.mean(feats, axis=0)
     
     # === Save ===
-    out_path = "/content/output/query_5000_dino.npy"
+    out_path = "output/query_5000_dino.npy"
     np.save(out_path, final_features)
     print(f"✅ Saved: {out_path} with shape {final_features.shape}")

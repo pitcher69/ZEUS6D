@@ -14,8 +14,8 @@
 
 
 - target
-- genpc.py
-- dino.py
+- genpc.py (included in dino_pca)
+- dino.py (included in dino_pca)
 - dino_pca.py
 
 !zip -r /content/point_clouds.zip /content/output/point_cloud
