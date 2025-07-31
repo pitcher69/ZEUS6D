@@ -1,4 +1,4 @@
-**.pyc
-**.png
-**.ply
-**.npy
+*.pyc
+*.png
+*.ply
+*.npy
