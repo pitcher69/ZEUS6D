@@ -51,8 +51,6 @@ rgb_gif_path = f"{video_id}.gif"
 print(f"🎞️ Creating GIF of RGB frames for {video_id}...")
 make_gif_from_folder(rgb_frames_dir, rgb_gif_path)
 
-
-
 device = "mps" if torch.backends.mps.is_available() else ("cuda" if torch.cuda.is_available() else "cpu")
 video_id = "../video50"
 frames_dir = video_id
@@ -110,13 +108,9 @@ depth_gif_path = f"{video_id}_depth.gif"
 print(f"🎞️ Creating depth visualization GIF for {video_id}...")
 make_gif_from_folder(depth_dir, depth_gif_path)
 
-
-
 logging.info("Initialize object detectors")
 gdino = GroundingDINOObjectPredictor(use_vitb=False, threshold=0.5) # we set threshold for GroundingDINO here!!!
 SAM = SegmentAnythingPredictor(vit_model="vit_h")
-
-
 
 def get_bbox_masks_from_gdino_sam(image_path, gdino, SAM, text_prompt='objects', visualize=False):
     """
@@ -156,15 +150,13 @@ def get_bbox_masks_from_gdino_sam(image_path, gdino, SAM, text_prompt='objects',
         display(bbox_annotated_pil)
     return accurate_bboxs, masks, bbox_annotated_pil
 
-
-
 # === Device setup
 device = "mps" if torch.backends.mps.is_available() else ("cuda" if torch.cuda.is_available() else "cpu")
 
 # === Load PromptGen (Florence-2-base-PromptGen v1.5)
 model_id = "createveai/Florence-2-base-PromptGen-v1.5"
 processor = AutoProcessor.from_pretrained(model_id, trust_remote_code=True, use_fast=True)
-model = AutoModelForCausalLM.from_pretrained(model_id, trust_remote_code=True).to(device)
+model = AutoModelForCausalLM.from_pretrained(model_id, trust_remote_code=True, attn_implementation="eager").to(device)
 
 render_root = "../renders/"
 object_ids = {}
@@ -224,7 +216,7 @@ for obj_dir in tqdm(render_dirs):
         prompt = "<CAPTION>"
         inputs = processor(text=prompt, images=img, return_tensors="pt").to(device)
         with torch.no_grad():
-            out = model.generate(**inputs, max_new_tokens=50, num_beams=3)
+            out = model.generate(**inputs, max_new_tokens=50, num_beams=3, use_cache=False)
 
         raw = processor.batch_decode(out, skip_special_tokens=False)[0]
         # postprocess for prompt-cue
@@ -242,9 +234,6 @@ for obj_dir in tqdm(render_dirs):
 print("\n✅ Final object_ids:")
 for k, v in object_ids.items():
     print(f"{k}: {v}")
-
-
-
 
 # === Device and paths
 device = "mps" if torch.backends.mps.is_available() else ("cuda" if torch.cuda.is_available() else "cpu")
@@ -267,7 +256,7 @@ for frame_name in tqdm(rgb_frames, desc="🧠 Generating masks"):
     frame_id = os.path.splitext(frame_name)[0]
     frame_path = os.path.join(frames_dir, frame_name)
 
-    for word in object_ids:
+    for word in object_ids.values():
         try:
             # Get SAM mask
             accurate_bboxs, masks, vis_img = get_bbox_masks_from_gdino_sam(frame_path, gdino, SAM, text_prompt=word, visualize=False)
@@ -286,114 +275,84 @@ for frame_name in tqdm(rgb_frames, desc="🧠 Generating masks"):
 
 print("✅ All masks saved.")
 
-
-
 video_id = "../video50"
-mask_root = f"{video_id}_mask_promptgen"
-output_gif_root = os.path.dirname(video_id)
+mask_root = f"{video_id}_mask"
+output_gif_root = os.path.dirname(video_id)  # Save gifs next to video50
 
-frame_folders = sorted([d for d in os.listdir(mask_root) if d.endswith("_mask")])
+# Collect all mask files
+mask_files = [f for f in os.listdir(mask_root) if f.endswith(".png")]
 
-# Get object names from first mask folder
-example_mask_dir = os.path.join(mask_root, frame_folders[0])
-object_names = sorted([
-    f.replace("mask_", "").replace(".png", "") 
-    for f in os.listdir(example_mask_dir) if f.endswith(".png")
-])
+# Extract all object names from mask filenames (frameID_object.png)
+object_names = sorted(set(
+    f.split("_", 1)[1].replace(".png", "") for f in mask_files
+))
 
 print(f"🧠 Found object categories: {object_names}")
 
 for object_name in object_names:
-    frames = []
+    mask_frames = []
+    overlay_frames = []
 
-    for folder in frame_folders:
-        mask_path = os.path.join(mask_root, folder, f"mask_{object_name}.png")
+    # Get all mask files for this object
+    object_mask_files = sorted([
+        f for f in mask_files if f.endswith(f"_{object_name}.png")
+    ])
+
+    for mask_file in object_mask_files:
+        frame_id = mask_file.split("_")[0]
+        mask_path = os.path.join(mask_root, mask_file)
+        rgb_path = os.path.join(video_id, f"{frame_id}.png")
 
         if not os.path.exists(mask_path):
             continue
 
-        # Load mask image (grayscale)
+        # --- Grayscale mask-only GIF ---
         mask_img = Image.open(mask_path).convert("L")
-        frames.append(mask_img)
+        mask_frames.append(mask_img)
 
-    if frames:
-        safe_name = object_name.replace(" ", "_").replace("/", "_")
-        output_gif_path = os.path.join(output_gif_root, f"{safe_name}_mask_only.gif")
-
-        frames[0].save(
-            output_gif_path,
-            format="GIF",
-            save_all=True,
-            append_images=frames[1:],
-            duration=150,
-            loop=0
-        )
-        print(f"✅ Saved mask-only GIF for {object_name}: {output_gif_path}")
-    else:
-        print(f"⚠️ No mask frames found for object '{object_name}' — skipping.")
-
-
-
-video_id = "../video50"
-mask_root = f"{video_id}_mask_promptgen"
-output_gif_root = os.path.dirname(video_id)  # same parent as video50
-
-frame_folders = sorted([d for d in os.listdir(mask_root) if d.endswith("_mask")])
-rgb_dir = video_id
-
-# Build list of unique object names from one frame (assuming consistent naming)
-example_mask_dir = os.path.join(mask_root, frame_folders[0])
-object_names = sorted([
-    f.replace("mask_", "").replace(".png", "") 
-    for f in os.listdir(example_mask_dir) if f.endswith(".png")
-])
-
-print(f"🧠 Found object categories: {object_names}")
-
-# For each object (e.g., "banana"), build its frame-wise overlay
-for object_name in object_names:
-    frames = []
-
-    for folder in frame_folders:
-        frame_id = folder.replace("_mask", "")
-        rgb_path = os.path.join(rgb_dir, f"{frame_id}.png")
-        mask_path = os.path.join(mask_root, folder, f"mask_{object_name}.png")
-
+        # --- Overlay GIF ---
         if not os.path.exists(rgb_path):
             print(f"⚠️ Missing RGB frame: {rgb_path}")
             continue
-        if not os.path.exists(mask_path):
-            # Skip if object not present in this frame
-            continue
 
-        # Load images
         rgb_img = Image.open(rgb_path).convert("RGBA")
-        mask_img = Image.open(mask_path).convert("L")
-
-        # Make red overlay
-        red_mask = Image.fromarray(np.zeros((mask_img.height, mask_img.width, 4), dtype=np.uint8))
-        red_mask_np = np.array(red_mask)
         mask_np = np.array(mask_img)
-        red_mask_np[mask_np > 0] = [255, 0, 0, 100]  # red with alpha
-        red_mask = Image.fromarray(red_mask_np, mode='RGBA')
 
-        # Composite
-        composite = Image.alpha_composite(rgb_img, red_mask).convert("RGB")
-        frames.append(composite)
+        red_overlay_np = np.zeros((mask_np.shape[0], mask_np.shape[1], 4), dtype=np.uint8)
+        red_overlay_np[mask_np > 0] = [255, 0, 0, 100]  # Red with alpha
 
-    # Save if we have frames
-    if frames:
+        red_overlay = Image.fromarray(red_overlay_np, mode="RGBA")
+        composite = Image.alpha_composite(rgb_img, red_overlay).convert("RGB")
+        overlay_frames.append(composite)
+
+    # Save mask-only GIF
+    if mask_frames:
         safe_name = object_name.replace(" ", "_").replace("/", "_")
-        output_gif_path = os.path.join(output_gif_root, f"{safe_name}_overlay.gif")
-
-        frames[0].save(
-            output_gif_path,
+        gif_path = os.path.join(output_gif_root, f"{safe_name}.gif")
+        mask_frames[0].save(
+            gif_path,
             format="GIF",
             save_all=True,
-            append_images=frames[1:],
+            append_images=mask_frames[1:],
             duration=150,
             loop=0
         )
-        print(f"✅ Saved GIF for {object_name}: {output_gif_path}")
+        print(f"✅ Saved mask-only GIF: {gif_path}")
     else:
-        print(f"⚠️ No frames found for object '{object_name}' — skipping.")
+        print(f"⚠️ No mask frames found for {object_name}.")
+
+    # Save overlay GIF
+    if overlay_frames:
+        safe_name = object_name.replace(" ", "_").replace("/", "_")
+        gif_path = os.path.join(output_gif_root, f"{safe_name}_overlay.gif")
+        overlay_frames[0].save(
+            gif_path,
+            format="GIF",
+            save_all=True,
+            append_images=overlay_frames[1:],
+            duration=150,
+            loop=0
+        )
+        print(f"✅ Saved overlay GIF: {gif_path}")
+    else:
+        print(f"⚠️ No overlay frames found for {object_name}.")
