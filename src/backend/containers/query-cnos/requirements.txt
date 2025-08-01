@@ -1,0 +1,22 @@
+# Core scientific computing
+numpy>=1.24.0
+opencv-python>=4.8.0
+Pillow>=10.0.0
+tqdm>=4.66.0
+matplotlib>=3.7.0
+
+# 3D rendering and processing
+open3d>=0.18.0
+pyrender>=0.1.45
+trimesh>=3.23.0
+
+# Kafka integration
+kafka-python>=2.0.0
+flask>=2.3.2
+
+# Deep learning (simplified)
+transformers>=4.30.0
+
+# Utilities
+requests>=2.32.0
+psutil>=5.9.0

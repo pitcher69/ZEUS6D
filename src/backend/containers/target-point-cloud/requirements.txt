@@ -1,0 +1,16 @@
+# Core 3D processing
+open3d==0.18.0
+opencv-python==4.8.1.78
+numpy==1.24.4
+Pillow==10.1.0
+
+# Kafka integration  
+kafka-python==2.0.2
+flask==2.3.2
+
+# Performance libraries (simplified)
+psutil==5.9.6
+tqdm==4.66.1
+
+# File processing
+PyYAML==6.0.2

@@ -1,0 +1,21 @@
+# Core dependencies for feature fusion
+numpy==1.24.4
+scipy==1.10.1
+scikit-learn==1.3.2
+
+# GPU acceleration (optional)
+numba==0.58.1
+
+# System and utility libraries
+psutil==5.9.6
+tqdm==4.66.1
+
+# Kafka integration
+kafka-python==2.0.2
+flask==2.3.2
+
+# Multithreading and parallel processing
+joblib==1.4.2
+
+# Utility libraries
+pathlib2==2.3.7

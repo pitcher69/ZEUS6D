@@ -1,0 +1,26 @@
+# Core deep learning
+torch>=2.0.0
+torchvision>=0.15.0
+transformers==4.35.2
+
+# Computer vision and 3D processing
+opencv-python==4.8.1.78
+open3d==0.18.0
+Pillow==10.1.0
+numpy==1.24.4
+
+# Scientific computing and ML
+scikit-learn==1.3.2
+scipy==1.11.4
+
+# Kafka integration
+kafka-python==2.0.2
+flask==2.3.2
+
+# Performance and monitoring
+psutil==5.9.6
+tqdm==4.66.1
+
+# File processing
+PyYAML==6.0.2
+
