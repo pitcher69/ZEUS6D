@@ -74,7 +74,7 @@ def cosine_sim(model,reference_tensor,choices_tensor):
 
     return torch.argmax(cosine_sims_avg,dim=0),cosine_sims_avg,cosine_sims
 
-def SAR_SingleCutout(mesh_or_scene : trimesh.Geometry,cutout,object_pose,sym_matrces,model,output_dir,camera_intrinsic=None):
+def SAR_SingleCutout(mesh_or_scene : trimesh.Geometry,cutout,object_pose,sym_matrces,model,output_dir=None,camera_intrinsic=None):
     cutout = Image.open(cutout)
     rendered_views = []
     rendered_view_image = []
@@ -123,9 +123,14 @@ def SAR_SingleCutout(mesh_or_scene : trimesh.Geometry,cutout,object_pose,sym_mat
 
     final_pose = np.eye(4)
     final_pose[:3,:3] = sym_matrces[best_match_idicies]
+    if output_dir:
+        np.save(output_dir,object_pose @ final_pose)
+    return (object_pose @ final_pose)
+    
 
-    np.save(output_dir,object_pose @ final_pose)
 
-def SAR(mesh_or_scene,cutouts,symmetry_matrices,object_poses,model,output_dirs,camera_intrinsic):
+def SAR(mesh_or_scene,cutouts,symmetry_matrices,object_poses,model,output_dirs=None,camera_intrinsic=None):
+    final_matrixes = []
     for i,(object_pose,cutout,output_dir) in tqdm(enumerate(zip(object_poses,cutouts,output_dirs))):
-        SAR_SingleCutout(mesh_or_scene,cutout,object_pose,symmetry_matrices,model,output_dir,camera_intrinsic)
+        final_matrixes.append(SAR_SingleCutout(mesh_or_scene,cutout,object_pose,symmetry_matrices,model,output_dir,camera_intrinsic))
+    return final_matrixes
