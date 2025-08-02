@@ -1,1 +1,62 @@
-# ZEUS6D: Zero-shot Estimation of Unseen Shapes for 6DoF Pose Recovery  **ZEUS6D** is a training-free deep learning pipeline for estimating the **6D pose** of known objects from a single RGB image using their CAD models. The framework is designed to work without object-specific training or fine-tuning, enabling fast and scalable deployment in real-world scenarios.  ## 🔍 What is 6D Pose Estimation?  **6D pose estimation** refers to determining the full 3D position and orientation of an object with respect to the camera. Specifically, it estimates: - **3 degrees of freedom (DoF)** for rotation (roll, pitch, yaw) - **3 DoF** for translation (x, y, z coordinates)  Together, these form a transformation:  $$ \begin{bmatrix} R & t \\ 0 & 1 \end{bmatrix} $$  More precisely, this is a $4 \times 4$ homogeneous transformation matrix of the form:  $$ \begin{bmatrix} r_{11} & r_{12} & r_{13} & t_x \\ r_{21} & r_{22} & r_{23} & t_y \\ r_{31} & r_{32} & r_{33} & t_z \\ 0 & 0 & 0 & 1 \end{bmatrix} $$  Where: - $R$ is a $3 \times 3$ rotation matrix - $t = (t_x, t_y, t_z)$ is the 3D translation vector  ### 🛠 Why It Matters  Accurate 6D pose estimation is critical for: - Robotic manipulation and grasping - Augmented and virtual reality - Scene understanding and 3D reconstruction - Industrial automation and inspection  Unlike conventional methods that rely on object-specific training data, **ZEUS6D** enables **zero-shot inference** for novel objects using only their CAD models — no retraining required.  ## 📽️ Examples  AR APPLICATIONS  ![AR](examples/317560123-80e96855-a73c-4bee-bcef-7cba92df55ca.gif)  OUR DEMO  ![Demo](examples/my_comparison_animation.gif)  
+# ZEUS6D: Zero‑Shot Estimation of Unseen Shapes for 6‑DoF Pose Recovery
+
+**ZEUS6D** is a *training‑free* deep‑learning pipeline that estimates an object’s full 6‑DoF pose from a **single RGB image**, using only its CAD model—no object‑specific fine‑tuning required.
+
+---
+
+## 🔍 What is 6‑DoF Pose Estimation?
+
+6‑DoF pose describes an object’s
+
+* **3 DoF rotation** – roll, pitch, yaw
+* **3 DoF translation** – \$x\$, \$y\$, \$z\$
+
+Together they form a rigid‑body transform:
+
+$$
+\mathbf T \,=\,
+\begin{bmatrix}
+\mathbf R & \mathbf t \\
+\mathbf 0^{\!\top} & 1
+\end{bmatrix}
+$$
+
+with \$\mathbf R\in SO(3)\$ and \$\mathbf t = (t\_x, t\_y, t\_z)\$.  In expanded form:
+
+$$
+\begin{bmatrix}
+ r_{11} & r_{12} & r_{13} & t_x\\
+ r_{21} & r_{22} & r_{23} & t_y\\
+ r_{31} & r_{32} & r_{33} & t_z\\
+ 0 & 0 & 0 & 1
+\end{bmatrix}
+$$
+
+---
+
+## 🛠 Why It Matters
+
+Accurate 6‑DoF poses unlock
+
+* Robotics: manipulation & grasp planning
+* AR / VR: stable virtual anchors
+* 3‑D scene understanding & reconstruction
+* Industrial metrology & automated inspection
+
+**ZEUS6D** delivers these poses *zero‑shot*: swap in a new CAD mesh and infer immediately—no retraining cycle.
+
+---
+
+## 📽️ Examples
+
+**AR application**
+
+![AR demo](examples/317560123-80e96855-a73c-4bee-bcef-7cba92df55ca.gif)
+
+**Pipeline demo**
+
+![Pipeline comparison](examples/my_comparison_animation.gif)
+
+---
+
+> *For a full technical deep‑dive—pipeline stages, datasets, failure modes—see the documentation site in `docs/` or visit the published GitHub Pages site.*
