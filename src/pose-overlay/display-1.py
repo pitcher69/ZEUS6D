@@ -5,15 +5,10 @@ import trimesh
 # --- Inputs (using your provided paths and data) ---
 # IMPORTANT: These paths are absolute to your local machine.
 # Please ensure these files are accessible when running the script.
-mesh_path = r"C:\Users\ESHWAR\OneDrive\Desktop\cynaptics\iitisoc\ycbv\ycbv_models\models\obj_000003.ply"
-texture_path = r"C:\Users\ESHWAR\OneDrive\Desktop\cynaptics\iitisoc\ycbv\ycbv_models\models\obj_000003.png"
-rgb_path = r"C:\Users\ESHWAR\OneDrive\Desktop\cynaptics\iitisoc\ycbv\ycbv_test_bop19\test\000050\rgb\001874.png"
-trans = np.array([
-    [-0.96266065, -0.27077264, -0.00840297,  0.1168339],
-    [-0.0903287,   0.35005618, -0.93236334, -0.04114369],
-    [ 0.25539999, -0.89674012, -0.36142495,  0.75233823],
-    [ 0.,          0.,          0.,          1.]
-])
+mesh_path = "\model.ply"
+texture_path = "texture.png"
+rgb_path = "rgb.png"
+trans = np.load("matrix.npy")
 # Apply 180° rotation around Y-axis to the object
 Ry_180 = np.array([
     [1, 0,  0, 0],
@@ -25,11 +20,7 @@ Ry_180 = np.array([
 # Rotate the object by 180 degrees around Y
 transformation = trans @ Ry_180
 
-intrinsics = np.array([
-    [1066.778, 0.0, 312.9869],
-    [0.0, 1067.487, 241.3109],
-    [0.0, 0.0, 1.0]
-])
+intrinsics = np.load("intrinsics.npy")
 
 def rgb_to_20_gray(rgb_image):
     """
