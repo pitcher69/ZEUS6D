@@ -4,7 +4,7 @@
 
 ---
 
-## 🔍 What is 6‑DoF Pose Estimation?
+##  What is 6‑DoF Pose Estimation?
 
 6‑DoF pose describes an object’s
 
@@ -34,7 +34,7 @@ $$
 
 ---
 
-## 🛠 Why It Matters
+##  Why It Matters
 
 Accurate 6‑DoF poses unlock
 
@@ -47,7 +47,7 @@ Accurate 6‑DoF poses unlock
 
 ---
 
-## 📽️ Examples
+##  Examples
 
 **AR application**
 
