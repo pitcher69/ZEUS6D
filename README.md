@@ -8,8 +8,12 @@
 
 6‑DoF pose describes an object’s
 
-* **3 DoF rotation** – roll, pitch, yaw
-* **3 DoF translation** – \$x\$, \$y\$, \$z\$
+- **3 DoF rotation** – 
+  - **Roll**: rotation around the X-axis (like tilting your head side to side)  
+  - **Pitch**: rotation around the Y-axis (like nodding yes)  
+  - **Yaw**: rotation around the Z-axis (like shaking your head no)  
+- **3 DoF translation** – movement along the X, Y, and Z axes ($x$, $y$, $z$)
+
 
 Together they form a rigid‑body transform:
 
