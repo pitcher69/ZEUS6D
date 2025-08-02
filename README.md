@@ -14,7 +14,7 @@
 Together they form a rigid‑body transform:
 
 $$
-\mathbf T \,=\,
+\mathbf T \=\
 \begin{bmatrix}
 \mathbf R & \mathbf t \\
 \mathbf 0^{} & 1
