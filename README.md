@@ -17,7 +17,7 @@ $$
 \mathbf T \,=\,
 \begin{bmatrix}
 \mathbf R & \mathbf t \\
-\mathbf 0^{\!\top} & 1
+\mathbf 0^{} & 1
 \end{bmatrix}
 $$
 
