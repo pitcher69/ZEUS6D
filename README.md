@@ -4,20 +4,24 @@
 
 ---
 
-## 🔍 What is 6‑DoF Pose Estimation?
+##  What is 6‑DoF Pose Estimation?
 
 6‑DoF pose describes an object’s
 
-* **3 DoF rotation** – roll, pitch, yaw
-* **3 DoF translation** – \$x\$, \$y\$, \$z\$
+- **3 DoF rotation** – 
+  - **Roll**: rotation around the X-axis (like tilting your head side to side)  
+  - **Pitch**: rotation around the Y-axis (like nodding yes)  
+  - **Yaw**: rotation around the Z-axis (like shaking your head no)  
+- **3 DoF translation** – movement along the X, Y, and Z axes ($x$, $y$, $z$)
+
 
 Together they form a rigid‑body transform:
 
 $$
-\mathbf T \,=\,
+\mathbf T \=\
 \begin{bmatrix}
 \mathbf R & \mathbf t \\
-\mathbf 0^{\!\top} & 1
+\mathbf 0^{} & 1
 \end{bmatrix}
 $$
 
@@ -34,7 +38,7 @@ $$
 
 ---
 
-## 🛠 Why It Matters
+##  Why It Matters
 
 Accurate 6‑DoF poses unlock
 
@@ -47,11 +51,12 @@ Accurate 6‑DoF poses unlock
 
 ---
 
-## 📽️ Examples
+##  Examples
 
 **AR application**
 
 ![AR demo](examples/317560123-80e96855-a73c-4bee-bcef-7cba92df55ca.gif)
+(by NV LABS)
 
 **Pipeline demo**
 
