@@ -1,26 +1,17 @@
 import cv2
 import numpy as np
 import open3d as o3d
+import json
 
-mesh_path = r"C:\Users\ESHWAR\OneDrive\Desktop\cynaptics\iitisoc\ycbv\ycbv_models\models\obj_000005.ply"
-rgb_path = r"C:\Users\ESHWAR\OneDrive\Desktop\cynaptics\iitisoc\ycbv\ycbv_test_bop19\test\000050\rgb\001874.png"
-transformation =np.array([
-    [-0.96266065, -0.27077264, -0.00840297,  0.1168339],
-    [-0.0903287,   0.35005618, -0.93236334, -0.04114369],
-    [ 0.25539999, -0.89674012, -0.36142495,  0.75233823],
-    [ 0.,          0.,          0.,          1.]
-])
-intrinsics = np.array([
-    [1066.778, 0.0, 312.9869],
-    [0.0, 1067.487, 241.3109],
-    [0.0, 0.0, 1.0]
-])
+mesh_path = "model.ply"
+rgb_path = "rgb.png"
+transformation =np.load("matrix.npy")
+intrinsics = np.load("intrinsics.npy")
 
-# Ground truth data for object id 5 (index 2 in your list for frame 1874)
-gt_data = {"cam_R_m2c": [-0.9586628303517895, -0.2835287329246605, -0.024014888195919924,
-                         -0.08379337156245308, 0.3619577494350433, -0.9284211691506922,
-                         0.27192578395746053, -0.8880300419285506, -0.37075363826953395],
-           "cam_t_m2c": [115.10576923433375, -41.07723959468405, 755.6857413095329]}
+with open('scene_gt.json', 'r') as f:
+    data = json.load(f)
+
+gt_data = np.array(data)
 
 gt_rotation = np.array(gt_data["cam_R_m2c"]).reshape(3, 3)
 gt_translation = (np.array(gt_data["cam_t_m2c"]) / 1000.0).reshape(3, 1)
