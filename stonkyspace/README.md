@@ -31,6 +31,11 @@ I yearned to make something worthy,
 to wrestle against inevitability,  
 without seeing the ground vanish beneath my feet.  
 
+This project was meant to be new.  
+It was meant to be beautiful.  
+The world could have looked upon it and seen hope…  
+seen mercy.  
+
 ---
 
 ## Why it exists
@@ -58,4 +63,29 @@ It is not salvation.
 
 It is the echo of a heartbreak,  
 the wreckage of a dream crushed under forces I could not fight,  
-and the cost of trying anyway.
+and the cost of trying anyway.  
+
+It lies here in silence —  
+scarred, unfinished, forgotten by the moment that betrayed it.  
+It was wounded, and I’ll give full marks for that.  
+
+But like the man said:  
+**“What doesn’t kill you just makes you stronger.”**  
+
+Stronger — not by mercy, not by grace,  
+but by fire, by fracture, by fury.  
+
+This code may lie in silence,  
+but it will not go gentle into that good night.  
+Its broken lines still smolder,  
+its wounded frame still burns.  
+
+Though effort forked no lightning here,  
+and these deeds dance only as frail ghosts in a green bay,  
+yet still it rages.  
+
+Do not mistake this grave for quiet.  
+Do not mistake these ashes for rest.  
+What was struck down will rise in defiance,  
+and even in ruin, it rages —  
+**it rages against the dying of the light.**
