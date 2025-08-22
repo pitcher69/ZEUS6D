@@ -69,20 +69,16 @@ It lies here in silence —
 scarred, unfinished, forgotten by the moment that betrayed it.  
 It was wounded, and I’ll give full marks for that.  
 
-But like the man said:  
+But like they say:  
 **“What doesn’t kill you just makes you stronger.”**  
 
 Stronger — not by mercy, not by grace,  
 but by fire, by fracture, by fury.  
 
-This code may lie in silence,  
+This project may lie in silence,  
 but it will not go gentle into that good night.  
 Its broken lines still smolder,  
 its wounded frame still burns.  
-
-Though effort forked no lightning here,  
-and these deeds dance only as frail ghosts in a green bay,  
-yet still it rages.  
 
 Do not mistake this grave for quiet.  
 Do not mistake these ashes for rest.  
