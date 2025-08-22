@@ -2,3 +2,4 @@
 *.png
 *.ply
 *.npy
+.DS_Store
