@@ -4,7 +4,7 @@ This isn’t a showcase.
 This isn’t a portfolio.  
 This isn’t triumph.  
 This isn’t progress.  
-This is **a monument to all my sins**.  
+This is a **monument to all my sins**.  
 
 Every line here was written with hope,  
 with the foolish dream that effort was enough.  
@@ -41,7 +41,7 @@ where broken things go to rest.
 
 Because forgetting is too easy.  
 Because ruins still tell stories.  
-Because code deserves a tombstone,  
+Because effort deserves a tombstone,  
 even if no one brings flowers.  
 
 I burned my time for a sunrise I’ll never see.  
