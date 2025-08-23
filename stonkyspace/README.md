@@ -91,6 +91,5 @@ its wounded frame still burns.
 
 Do not mistake this grave for quiet.  
 Do not mistake these ashes for rest.  
-What was struck down will rise in defiance,  
-and even in ruin, it rages —  
+for even in ruin, it rages —  
 **it rages against the dying of the light.**
