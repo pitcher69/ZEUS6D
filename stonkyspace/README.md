@@ -79,7 +79,7 @@ scarred, unfinished, forgotten by the moment that betrayed it.
 It was wounded, and I’ll give full marks for that.  
 
 But like they say:  
-**“What doesn’t kill you just makes you stronger.”**  
+**What doesn’t kill you just makes you stronger.**  
 
 Stronger — not by mercy, not by grace,  
 but by fire, by fracture, by fury.  
