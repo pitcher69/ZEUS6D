@@ -27,14 +27,22 @@ A sunless space carved from sleepless nights.
 I shared my dreams with ghosts,  
 and woke each day to equations that never resolved.  
 
+I’m damned for what I do.  
+My ego, my unwillingness to yield,  
+my eagerness to fight —  
+they’ve set me on a path from which there is no escape.  
+
 I yearned to make something worthy,  
 to wrestle against inevitability,  
 without seeing the ground vanish beneath my feet.  
 
 This project was meant to be new.  
 It was meant to be beautiful.  
-The world could have looked upon it and seen hope…  
-seen mercy.  
+The judge could have looked upon it and seen hope…  
+seen beauty.  
+
+Instead, they looked upon it and saw chaos —  
+a monument not to triumph, but to failure. 
 
 ---
 
@@ -50,8 +58,9 @@ Because effort deserves a tombstone,
 even if no one brings flowers.  
 
 I burned my time for a sunrise I’ll never see.  
-And the ego that began this fight  
-will never taste applause or gratitude.  
+And the ego that began this fight   
+will never have an audience,  
+will never stand in the light of victory. 
 
 ---
 
